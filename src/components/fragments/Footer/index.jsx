@@ -1,16 +1,19 @@
 import React from "react";
 import Contact from "./Contact";
-import Logo from "./Logo";
+import Logo from "../../elements/Logo";
 
 function index() {
   return (
     <>
-      <footer className="w-full">
+      <footer className="w-full bg-biru-100">
         <div className="flex-col py-10 flexc">
-          <Logo />
-          <p className="w-full max-w-lg p-3 text-center text-white bg-pink-600">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, non?
-            Lorem, ipsum dolor.
+          <div className="mb-20 size-72 sm:size-80">
+            <Logo />
+          </div>
+          <p className="w-full max-w-lg p-3 text-sm text-center text-white bg-pink-600 sm:text-base">
+            Pengen es segar? <br className="block sm:hidden" />{" "}
+            <b> Rombong Mamah Hasan</b> solusinya! <br /> WA aja, es langsung
+            meluncur!
           </p>
         </div>
         <Contact />

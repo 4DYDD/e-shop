@@ -1,16 +1,13 @@
 import React from "react";
 import Card from "../../../elements/Card";
 
-function Library() {
+function Library({ products, setProducts }) {
   return (
     <>
-      <div className="grid w-full max-w-[60rem] grid-cols-1 gap-8 text-center lg:grid-cols-3 bg-fuchsia-400">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <div className="grid w-full max-w-[60rem] grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:grid-cols-3">
+        {products.map((value, index) => (
+          <Card value={value} />
+        ))}
       </div>
     </>
   );

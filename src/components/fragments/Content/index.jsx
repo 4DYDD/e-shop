@@ -1,13 +1,14 @@
 import React from "react";
 import Etalase from "./Etalase";
 import About from "./About";
+import Dashboard from "./Dashboard";
 
-function index() {
+function index({ products, setProducts }) {
   return (
     <>
-      <div className="bg-red-500 mt-[5rem]">
-        <Etalase />
-        <About />
+      <div className=" mt-[5rem]">
+        <Dashboard />
+        <Etalase products={products} setProducts={setProducts} />
       </div>
     </>
   );
