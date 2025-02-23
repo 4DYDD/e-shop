@@ -1,12 +1,12 @@
 import React from "react";
+
 import Etalase from "./Etalase";
-import About from "./About";
 import Dashboard from "./Dashboard";
 
 function index({ products, setProducts }) {
   return (
     <>
-      <div className=" mt-[5rem]">
+      <div className="">
         <Dashboard />
         <Etalase products={products} setProducts={setProducts} />
       </div>
