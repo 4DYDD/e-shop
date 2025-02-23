@@ -41,7 +41,7 @@ function Navbar() {
               Cart
             </Menu>
           </div>
-          <button className="relative flexc flex-[1] !justify-end group">
+          <button className="relative flexc flex-[1] !justify-end group sm:!hidden">
             <span className="text-3xl text-biru-400 size-12 flexc">
               <i class="fa-solid fa-bars flex group-focus:!hidden"></i>
               <i class="fa-solid fa-xmark hidden group-focus:!flex"></i>
