@@ -1,8 +1,14 @@
 import React from "react";
+
+import { useMediaQuery } from "react-responsive";
 import { Link, Element } from "react-scroll";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function index() {
+  const isMobile = useMediaQuery({ maxWidth: 768 }); // Misalnya, 768px untuk mobile
+  const offset = isMobile ? -100 : -50; // Sesuaikan offset berdasarkan ukuran layar
+
   return (
     <>
       <Element
@@ -25,7 +31,7 @@ function index() {
               <i className="mr-4 text-lg fa-solid fa-location-dot" />
               Lokasi
             </button>
-            <Link to="myEtalase" smooth={true} duration={300}>
+            <Link to="myEtalase" smooth={true} duration={300} offset={offset}>
               <button className="px-7 sm:px-10 py-3 text-sm sm:text-base sm:py-3 text-white border hover:bg-sky-600 transall !duration-200 bg-sky-500 border-sky-500 rounded-xl flex items-center">
                 <i className="mr-4 text-lg fa-solid fa-cart-arrow-down" />
                 Beli

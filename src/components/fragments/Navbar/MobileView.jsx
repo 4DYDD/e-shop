@@ -1,7 +1,11 @@
 import React from "react";
 import Menu from "./Menu";
 
-function MobileView({ showSideBar }) {
+function MobileView({ offset, showSideBar, showCart, setShowCart }) {
+  const handleClick = () => {
+    setShowCart(!showCart);
+  };
+
   return (
     <>
       <div
@@ -18,6 +22,7 @@ function MobileView({ showSideBar }) {
         <Menu
           className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent w-full`}
           to={"myEtalase"}
+          offset={offset}
         >
           Product
         </Menu>
@@ -28,6 +33,10 @@ function MobileView({ showSideBar }) {
           About
         </Menu>
         <Menu
+          onClick={(event) => {
+            event.stopPropagation(); // Mencegah event bubbling
+            handleClick();
+          }}
           className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent w-full flex-[1]`}
         >
           Cart

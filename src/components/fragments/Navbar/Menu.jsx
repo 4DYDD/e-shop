@@ -1,7 +1,8 @@
 import React from "react";
+
 import { Link, Element } from "react-scroll";
 
-function Menu({ to, className, children }) {
+function Menu({ to, offset, onClick, className, children }) {
   return (
     <>
       {to ? (
@@ -9,14 +10,18 @@ function Menu({ to, className, children }) {
           to={to}
           smooth={true}
           duration={300}
-          className={`flexc flex-[1] bg-yellow-500 h-full ${className} cursor-pointer`}
+          offset={offset || 0}
+          className={`flexc flex-[1] bg-yellow-500 h-full cursor-pointer ${className}`}
         >
           {children}
         </Link>
       ) : (
-        <button className={`flexc flex-[1] bg-yellow-500 h-full ${className}`}>
+        <div
+          onClick={onClick}
+          className={`flexc flex-[1] bg-yellow-500 h-full cursor-pointer ${className}`}
+        >
           {children}
-        </button>
+        </div>
       )}
     </>
   );

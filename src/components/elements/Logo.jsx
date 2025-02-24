@@ -1,7 +1,7 @@
 import React from "react";
 import logoRMH from "../../assets/img/logoRMH.png";
 
-function Logo({ className }) {
+function Logo({ src, className }) {
   return (
     <>
       <div
@@ -9,7 +9,7 @@ function Logo({ className }) {
       >
         <div
           style={{
-            backgroundImage: `url(${logoRMH})`,
+            backgroundImage: `url(${src || logoRMH})`,
           }}
           className="w-full h-full bg-red-500 bg-center bg-no-repeat bg-cover rounded-full"
         />
