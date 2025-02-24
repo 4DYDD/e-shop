@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Logo from "../../elements/Logo";
 import Menu from "./Menu";
+import MobileView from "./MobileView";
 
 function Navbar() {
+  const [showSideBar, setShowSideBar] = useState(false);
+
   return (
     <>
       <nav className="py-3 fixed w-full top-0 z-[99] bg-white shadow">
@@ -25,7 +28,7 @@ function Navbar() {
             </Menu>
             <Menu
               className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
-              to={"myElatase"}
+              to={"myEtalase"}
             >
               Product
             </Menu>
@@ -41,36 +44,27 @@ function Navbar() {
               Cart
             </Menu>
           </div>
-          <button className="relative flexc flex-[1] !justify-end group sm:!hidden">
+          <button
+            onClick={() => {
+              setShowSideBar(!showSideBar);
+            }}
+            className="relative flexc flex-[1] !justify-end group sm:!hidden"
+          >
             <span className="text-3xl text-biru-400 size-12 flexc">
-              <i class="fa-solid fa-bars flex group-focus:!hidden"></i>
-              <i class="fa-solid fa-xmark hidden group-focus:!flex"></i>
+              <i
+                class={`fa-solid fa-bars flex ${showSideBar && "!hidden"}`}
+              ></i>
+              <i
+                class={`fa-solid fa-xmark hidden ${showSideBar && "!flex"}`}
+              ></i>
             </span>
-            <div className="flexc flex-col flex-[1] text-center gap-2 w-[8rem] group-focus:!flex !hidden transcenter !top-[500%] bg-white p-3 rounded-lg shadow !left-[30%]">
-              <Menu
-                className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent w-full`}
-                to={"myDashboard"}
-              >
-                Home
-              </Menu>
-              <Menu
-                className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent w-full`}
-                to={"myElatase"}
-              >
-                Product
-              </Menu>
-              <Menu
-                className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent w-full`}
-                to={"myAbout"}
-              >
-                About
-              </Menu>
-              <Menu
-                className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent w-full flex-[1]`}
-              >
-                Cart
-              </Menu>
-            </div>
+
+            {showSideBar && (
+              <div
+                className={`flexc text-center w-full h-full transcenter !fixed p-3 shadow`}
+              ></div>
+            )}
+            <MobileView showSideBar={showSideBar} />
           </button>
         </div>
       </nav>

@@ -26,56 +26,70 @@ function index() {
       <div className="flex-col flexc">
         <div className="grid grid-cols-2 sm:grid-cols-4 h-[100%]">
           <a
-            className="hover:text-red-500"
+            className="transall text-biru-500 hover:text-pink-500"
             href={socialMedia.instagram}
             // target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="flex items-center px-6 py-4 mx-2 my-4 transall">
-              <FontAwesomeIcon icon={faInstagram} className="mr-2 size-8" />{" "}
-              Instagram
+            <div className="py-4 mx-3 my-2 sm:my-4 flexc !justify-between transall">
+              <FontAwesomeIcon
+                icon={faInstagram}
+                className="block p-2 text-4xl size-8"
+              />
+              <span className="w-full text-base sm:text-lg">Instagram</span>
             </div>
           </a>
           <a
-            className="hover:text-red-500"
+            className="transall text-biru-500 hover:text-green-500"
             href={socialMedia.whatsapp}
             // target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="flex items-center px-6 py-4 mx-2 my-4 transall">
-              <FontAwesomeIcon icon={faWhatsapp} className="mr-2 size-8" />{" "}
-              Whatsapp
+            <div className="py-4 mx-3 my-2 sm:my-4 flexc !justify-between transall">
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                className="block p-2 text-4xl size-8"
+              />
+              <span className="w-full text-base sm:text-lg">Whatsapp</span>
             </div>
           </a>
           <a
-            className="hover:text-red-500"
+            className="transall text-biru-500 hover:text-blue-500"
             href={socialMedia.facebook}
             // target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="flex items-center px-6 py-4 mx-2 my-4 transall">
-              <FontAwesomeIcon icon={faFacebook} className="mr-2 size-8" />{" "}
-              Facebook
+            <div className="py-4 mx-3 my-2 sm:my-4 flexc !justify-between transall">
+              <FontAwesomeIcon
+                icon={faFacebook}
+                className="block p-2 text-4xl size-8"
+              />
+              <span className="w-full text-base sm:text-lg">Facebook</span>
             </div>
           </a>
           <a
-            className="hover:text-red-500"
+            className="transall text-biru-500 hover:text-black"
             href={socialMedia.twitter}
             // target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="flex items-center px-6 py-4 mx-2 my-4 transall">
-              <FontAwesomeIcon icon={faTwitter} className="mr-2 size-8" />{" "}
-              Twitter
+            <div className="py-4 mx-3 my-2 sm:my-4 flexc !justify-between transall">
+              <FontAwesomeIcon
+                icon={faTwitter}
+                className="block p-2 text-4xl size-8"
+              />
+              <span className="w-full text-base sm:text-lg">Twitter</span>
             </div>
           </a>
         </div>
 
-        <div className="w-full gap-1 px-6 py-5 mt-2 flexc">
-          @copyright by{" "}
-          <a href="#" className="text-blue-500">
-            <b>Rombong Mamah Hasan</b>
-          </a>
+        <div className="w-full gap-1 px-6 py-6 mt-2 !text-biru-500 flexc">
+          <div className="inline-block mx-auto text-sm sm:text-base">
+            @copyright by{" "}
+            <a href="#" className="text-blue-400 transall hover:text-blue-500">
+              <b>Rombong Mamah Hasan</b>
+            </a>
+          </div>
         </div>
       </div>
     </>

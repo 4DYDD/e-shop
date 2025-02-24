@@ -1,21 +1,24 @@
 import kopi from "../assets/img/kopi.png";
 import susujeli from "../assets/img/susujeli.png";
-import kelapa from "../assets/img/kelapa.png";
+import melon from "../assets/img/melon.png";
 
 const dataProducts = [
   {
+    id: 1,
     image: kopi,
     name: "Es Kopi",
     price: 6000,
   },
   {
+    id: 2,
     image: susujeli,
-    name: "Es Susu Jeli",
+    name: "Susu Jeli Stroberi",
     price: 7000,
   },
   {
-    image: kelapa,
-    name: "Es Kelapa",
+    id: 3,
+    image: melon,
+    name: "Susu Jeli Melon",
     price: 8000,
   },
   // {

@@ -8,7 +8,7 @@ function index() {
   return (
     <>
       <Element name="myAbout">
-        <footer className="w-full bg-biru-100">
+        <footer className="w-full px-3 bg-biru-100 sm:px-0">
           <div className="flex-col py-10 flexc">
             <div className="mb-20 size-72 sm:size-80">
               <Logo />
