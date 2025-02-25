@@ -41,7 +41,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
       <nav className="py-3 fixed w-full top-0 z-[99] bg-white shadow">
         <div className="flexc !justify-between sm:!justify-center w-full max-w-[70rem] mx-auto px-6">
           <div className="flexc flex-[3] sm:flex-[1] !justify-start sm:ps-10">
-            <div className="size-14 sm:size-20 flexc">
+            <div className="border-2 rounded-full shadow size-14 sm:size-20 flexc border-biru-300">
               <Logo />
             </div>
             <div className="text-sm ps-4 text-biru-400">
@@ -138,7 +138,10 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
               } transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden`}
             >
               <div className="w-full shadow flexc !justify-evenly py-3">
-                <div className="text-biru-500">Keranjangmu</div>
+                <div className="text-biru-500 flexc">
+                  <i className="mr-1.5 fa-solid fa-cart-shopping"></i>
+                  <span>Keranjangmu</span>
+                </div>
               </div>
 
               {cart.length > 0 ? (
@@ -178,24 +181,31 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                     </span>
                   </div>
                 </div>
-                <div className="py-3 flexc !justify-evenly w-full text-white">
+                <div className="py-3 flexc !justify-evenly w-full text-white text-xs">
                   <div
                     onClick={() => {
-                      alert("Fitur Batalkan Pesanan Sedang Dibuat!");
-                      setShowCart(!showCart);
+                      const konfirmasi = confirm(
+                        "Yakin Mau Mengosongkan Keranjang?"
+                      );
+                      if (konfirmasi) {
+                        alert("Fitur Batalkan Pesanan Sedang Dibuat!");
+                        setShowCart(!showCart);
+                      }
                     }}
-                    className="py-2 bg-red-500 rounded-lg shadow px-7"
+                    className="px-2.5 py-2.5 bg-red-500 rounded-lg shadow flexc"
                   >
-                    Batal
+                    <i className="mr-2 text-[0.9rem] fa-solid fa-trash-arrow-up"></i>
+                    <span>Kosongkan Keranjang</span>
                   </div>
                   <div
                     onClick={() => {
                       alert("Fitur Pesan Sedang Dibuat!");
                       setShowCart(!showCart);
                     }}
-                    className="py-2 bg-green-500 rounded-lg shadow px-7"
+                    className="px-2.5 py-2.5 bg-green-500 rounded-lg shadow flexc"
                   >
-                    Pesan
+                    <i className="mr-2 text-[0.9rem] fa-solid fa-cart-arrow-down"></i>
+                    <span>Buat Pesanan</span>
                   </div>
                 </div>
               </div>

@@ -26,7 +26,7 @@ function index({ key, value }) {
             <span className="transcenter !left-[1.4rem] !top-[85%] w-1/6 h-[2px] bg-sky-400"></span>
           </p>
           <div className="!justify-between w-full flexc flex-[1] py-2 text-sm">
-            <div className="px-3 py-2 font-bold bg-white rounded-lg shadow text-sky-500 font-inter">
+            <div className="px-3 py-2 font-bold bg-white rounded-lg shadow text-sky-500">
               {toIndonesiaCurrency(value.price)}
             </div>
             <button className="px-4 py-2 text-white border hover:bg-sky-600 transall !duration-200 bg-sky-500 border-sky-500 rounded-xl flex items-center">

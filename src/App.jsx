@@ -33,9 +33,9 @@ function App() {
 
   useEffect(() => {
     // buat fungsi untuk mengambil data di localStorage
-    if (cart.length < 1) {
-      setCart(dummyCart);
-    }
+    // if (cart.length < 1) {
+    //   setCart(dummyCart);
+    // }
   }, [cart]);
 
   // useEffect(() => {

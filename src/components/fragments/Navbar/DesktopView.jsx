@@ -20,8 +20,9 @@ function DesktopView({
           } transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden`}
         >
           <div className="relative w-full shadow flexc !justify-evenly py-3">
-            <div className="py-2 text-xl text-biru-500 flex-[1]">
-              Keranjangmu
+            <div className="py-2 text-xl text-biru-500 flex-[1] flexc">
+              <i className="mr-2 fa-solid fa-cart-shopping"></i>
+              <span>Keranjangmu</span>
             </div>
             <div
               onClick={() => {
@@ -65,24 +66,32 @@ function DesktopView({
                 </span>
               </span>
             </div>
-            <div className="flexc !justify-end gap-8 px-10 flex-[2] h-full text-white">
+            <div className="flexc !justify-end gap-8 px-10 flex-[2] h-full text-white text-base">
               <button
                 onClick={() => {
-                  alert("Fitur Batalkan Pesanan Sedang Dibuat!");
-                  setShowCart(!showCart);
+                  const konfirmasi = confirm(
+                    "Yakin Mau Mengosongkan Keranjang?"
+                  );
+
+                  if (konfirmasi) {
+                    alert("Fitur Batalkan Pesanan Sedang Dibuat!");
+                    setShowCart(!showCart);
+                  }
                 }}
-                className="py-2 bg-red-500 rounded-lg shadow px-7"
+                className="px-4 py-3 bg-red-500 rounded-lg shadow"
               >
-                Batal
+                <i className="mr-3 text-lg fa-solid fa-trash-arrow-up"></i>
+                <span>Kosongkan Keranjang</span>
               </button>
               <button
                 onClick={() => {
                   alert("Fitur Pesan Sedang Dibuat!");
                   setShowCart(!showCart);
                 }}
-                className="py-2 bg-green-500 rounded-lg shadow px-7"
+                className="px-4 py-3 bg-green-500 rounded-lg shadow"
               >
-                Pesan
+                <i className="mr-3 text-lg fa-solid fa-cart-arrow-down"></i>
+                <span>Buat Pesanan</span>
               </button>
             </div>
           </div>
