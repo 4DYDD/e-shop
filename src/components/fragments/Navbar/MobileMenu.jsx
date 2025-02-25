@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
 
-function MobileView({ offset, showSideBar, showCart, setShowCart }) {
+function MobileMenu({ offset, showSideBar, showCart, setShowCart }) {
   const handleClick = () => {
     setShowCart(!showCart);
   };
@@ -46,4 +46,4 @@ function MobileView({ offset, showSideBar, showCart, setShowCart }) {
   );
 }
 
-export default MobileView;
+export default MobileMenu;

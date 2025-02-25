@@ -29,7 +29,14 @@ function App() {
       totalPrice: 24000,
     },
   ];
-  const [cart, setCart] = useState(dummyCart);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    // buat fungsi untuk mengambil data di localStorage
+    if (cart.length < 1) {
+      setCart(dummyCart);
+    }
+  }, [cart]);
 
   // useEffect(() => {
   //   if (dataProducts.length > 0) {
