@@ -44,7 +44,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
             <div className="border-2 rounded-full shadow size-14 sm:size-20 flexc border-biru-300">
               <Logo />
             </div>
-            <div className="text-sm ps-4 text-biru-400">
+            <div className="text-sm font-semibold sm:text-lg ps-4 text-biru-400">
               Rombong <br /> Mamah Hasan
             </div>
           </div>
@@ -52,20 +52,20 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
           {/* === DEKSTOP VERSION === */}
           <div className="flexc flex-[1] text-center gap-5 h-full sm:!flex !hidden">
             <Menu
-              className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
+              className={`py-5 font-semibold rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
               to={"myDashboard"}
             >
               Home
             </Menu>
             <Menu
-              className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
+              className={`py-5 font-semibold rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
               to={"myEtalase"}
               offset={offset}
             >
               Product
             </Menu>
             <Menu
-              className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
+              className={`py-5 font-semibold rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
               to={"myAbout"}
             >
               About
@@ -74,7 +74,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
               onClick={() => {
                 setShowCart(!showCart);
               }}
-              className={`!bg-transparent flex-[1]`}
+              className={`font-semibold !bg-transparent flex-[1]`}
             >
               <button className="w-full py-5 shadow rounded-2xl transall text-biru-400 hover:text-biru-700">
                 Cart
@@ -82,7 +82,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
               {showCart && (
                 <div
                   className={`flexc text-center w-full h-full transcenter !fixed p-3 shadow cursor-auto`}
-                ></div>
+                />
               )}
             </Menu>
           </div>
@@ -137,10 +137,10 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                 !showCart && "!hidden"
               } transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden`}
             >
-              <div className="w-full shadow flexc !justify-evenly py-3">
-                <div className="text-biru-500 flexc">
+              <div className="w-full shadow flexc !justify-evenly">
+                <div className="w-full h-full py-3 text-white bg-biru-600 flexc">
                   <i className="mr-1.5 fa-solid fa-cart-shopping"></i>
-                  <span>Keranjangmu</span>
+                  <span className="font-bold">Keranjangmu</span>
                 </div>
               </div>
 
@@ -162,17 +162,17 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                 </>
               ) : (
                 <>
-                  <div className="relative w-full h-full p-3 text-lg flexc text-biru-600">
+                  <div className="relative w-full h-full p-3 text-lg font-bold flexc text-biru-200">
                     Keranjang Kosong . . .
                   </div>
                 </>
               )}
 
               <div className="flex-col w-full font-bold shadow shadow-gray-400 flexc">
-                <div className="py-5 flexc !justify-start w-full px-5 text-white text-base bg-biru-400">
+                <div className="py-5 flexc !justify-start w-full px-5 text-white text-base bg-biru-500">
                   <div>
                     Total Pesanan :{" "}
-                    <span className="ms-3">
+                    <span className="ms-1">
                       <span>
                         {cart.length > 1
                           ? toIndonesiaCurrency(totalPesanan())

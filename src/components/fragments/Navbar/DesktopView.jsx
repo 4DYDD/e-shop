@@ -15,12 +15,12 @@ function DesktopView({
           onClick={(event) => {
             event.stopPropagation();
           }}
-          className={`flexc flex-col flex-[1] h-[35rem] text-center w-[70rem] ${
+          className={`flexc flex-col flex-[1] h-[35rem] text-center w-[70rem] transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden ${
             !showCart && "!hidden"
-          } transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden`}
+          }`}
         >
-          <div className="relative w-full shadow flexc !justify-evenly py-3">
-            <div className="py-2 text-xl text-biru-500 flex-[1] flexc">
+          <div className="relative w-full shadow flexc !justify-evenly">
+            <div className="py-5 h-full text-xl bg-biru-600 text-white flex-[1] flexc font-bold">
               <i className="mr-2 fa-solid fa-cart-shopping"></i>
               <span>Keranjangmu</span>
             </div>
@@ -28,7 +28,7 @@ function DesktopView({
               onClick={() => {
                 setShowCart(!showCart);
               }}
-              className="flex-[1] transcenter !left-[95%] h-full w-28 flexc text-3xl text-biru-500 cursor-pointer"
+              className="flex-[1] transcenter !left-[95%] h-full w-28 flexc text-3xl text-white cursor-pointer"
             >
               <i className={`fa-solid fa-xmark !flex`}></i>
             </div>
@@ -49,14 +49,14 @@ function DesktopView({
             </div>
           ) : (
             <>
-              <div className="relative w-full h-full p-3 text-2xl flexc text-biru-600">
+              <div className="relative w-full h-full p-3 text-2xl font-bold flexc text-biru-200">
                 Keranjang Kosong . . .
               </div>
             </>
           )}
 
           <div className="w-full font-bold text-lg shadow shadow-gray-400 flexc !justify-evenly text-white">
-            <div className="py-8 flexc flex[1] !justify-start px-8 h-full bg-biru-400">
+            <div className="py-8 flexc flex[1] !justify-start px-8 h-full bg-biru-500">
               Total Pesanan :{" "}
               <span className="ms-3">
                 <span>

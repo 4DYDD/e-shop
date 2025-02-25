@@ -9,7 +9,7 @@ function MobileMenu({ offset, showSideBar, showCart, setShowCart }) {
   return (
     <>
       <div
-        className={`flexc flex-col flex-[1] text-center gap-2 w-[8rem] ${
+        className={`font-bold flexc flex-col flex-[1] text-center gap-2 w-[8rem] ${
           !showSideBar && "!hidden"
         } transcenter !top-[480%] bg-white p-3 rounded-lg shadow !left-[30%]`}
       >
