@@ -1,13 +1,13 @@
 import React from "react";
 import Card from "../../../elements/Card";
 
-function Library({ dataProducts }) {
+function Library({ dataProducts, cart, addItem }) {
   return (
     <>
-      <div className="grid w-full max-w-[60rem] grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full max-w-[60rem] grid-cols-1 gap-8 lg:gap-4 text-center sm:grid-cols-2 lg:grid-cols-3">
         {dataProducts.map((value, index) => (
           <React.Fragment key={index}>
-            <Card value={value} />
+            <Card value={value} cart={cart} addItem={addItem} />
           </React.Fragment>
         ))}
       </div>

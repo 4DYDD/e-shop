@@ -3,12 +3,12 @@ import React from "react";
 import Etalase from "./Etalase";
 import Dashboard from "./Dashboard";
 
-function index() {
+function index({ cart, addItem }) {
   return (
     <>
       <div className="">
         <Dashboard />
-        <Etalase />
+        <Etalase cart={cart} addItem={addItem} />
       </div>
     </>
   );

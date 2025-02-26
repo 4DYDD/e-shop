@@ -33,9 +33,7 @@ function App() {
 
   useEffect(() => {
     // buat fungsi untuk mengambil data di localStorage
-    // if (cart.length < 1) {
-    //   setCart(dummyCart);
-    // }
+    console.log(cart);
   }, [cart]);
 
   // useEffect(() => {
@@ -44,8 +42,51 @@ function App() {
   //   }
   // }, []);
 
-  const addItem = (samting) => {
-    console.log("add samting");
+  const findCartProduct = (id) => {
+    const product = cart.find((value, index) => value.id == id);
+    return product;
+  };
+
+  const findProduct = (id) => {
+    const product = dataProducts.find((value) => value.id == id);
+    return product;
+  };
+
+  const handleAddItem = (id) => {
+    const product = findProduct(id);
+
+    const updatedCart = [
+      ...cart,
+      { id: id, quantity: 1, totalPrice: product.price },
+    ];
+
+    updatedCart.sort((a, b) => a.id - b.id);
+
+    setCart(updatedCart);
+  };
+
+  const addItem = (id) => {
+    const cartProduct = findCartProduct(id);
+
+    if (!cartProduct) {
+      handleAddItem(id);
+    } else {
+      const newQty = cartProduct.quantity + 1;
+      const newTotalPrice = findProduct(id).price * newQty;
+
+      const newCartProduct = {
+        ...cartProduct,
+        quantity: newQty,
+        totalPrice: newTotalPrice,
+      };
+
+      const newCart = cart.filter((value) => value.id != id);
+      const updatedCart = [...newCart, newCartProduct];
+
+      updatedCart.sort((a, b) => a.id - b.id);
+
+      setCart(updatedCart);
+    }
   };
 
   const removeItem = (samting) => {
@@ -60,7 +101,7 @@ function App() {
         addItem={addItem}
         removeItem={removeItem}
       />
-      <Content />
+      <Content cart={cart} addItem={addItem} />
       <Footer />
     </main>
   );
