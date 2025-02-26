@@ -8,7 +8,14 @@ import MobileMenu from "./MobileMenu";
 import CartList from "./CartList";
 import DesktopView from "./DesktopView";
 
-function Navbar({ cart, setCart, addItem, removeItem }) {
+function Navbar({
+  cart,
+  setCart,
+  addItem,
+  removeItem,
+  createOrder,
+  dataProducts,
+}) {
   const isMobile = useMediaQuery({ maxWidth: 768 }); // Misalnya, 768px untuk mobile
   const offset = isMobile ? -100 : -50; // Sesuaikan offset berdasarkan ukuran layar
 
@@ -34,6 +41,11 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
 
       return total;
     }
+  };
+
+  const findProduct = (id) => {
+    const product = dataProducts.find((value) => value.id == id);
+    return product;
   };
 
   return (
@@ -91,8 +103,13 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
             toIndonesiaCurrency={toIndonesiaCurrency}
             showCart={showCart}
             cart={cart}
+            setCart={setCart}
             setShowCart={setShowCart}
+            addItem={addItem}
+            removeItem={removeItem}
             totalPesanan={totalPesanan}
+            createOrder={createOrder}
+            dataProducts={dataProducts}
           />
           {/* === DEKSTOP VERSION === */}
 
@@ -200,7 +217,21 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                   </div>
                   <div
                     onClick={() => {
-                      alert("Fitur Pesan Sedang Dibuat!");
+                      // alert("Fitur Pesan Sedang Dibuat!");
+
+                      const fullOrder = cart.map((value) => {
+                        const product = findProduct(value.id);
+                        const cartList = {
+                          ...value,
+                          name: product.name,
+                          price: product.price,
+                        };
+
+                        return cartList;
+                      });
+
+                      createOrder(fullOrder);
+
                       setShowCart(!showCart);
                     }}
                     className="md:me-3 px-2.5 py-2.5 bg-green-500 rounded-lg shadow flexc"

@@ -1,8 +1,8 @@
 import React from "react";
-import dataProducts from "../../../data/dataProducts";
+import dataProducts from "../../../data/myDataProducts";
 import Logo from "../../elements/Logo";
 
-function CartList({ toIndonesiaCurrency, value }) {
+function CartList({ toIndonesiaCurrency, addItem, removeItem, value }) {
   const product = dataProducts.find((prod) => prod.id == value.id);
   return (
     <>
@@ -22,14 +22,26 @@ function CartList({ toIndonesiaCurrency, value }) {
               : value.totalPrice}
           </div>
           <div className="w-full h-full gap-2 flexc">
-            <div className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer">
+            <div
+              onClick={(event) => {
+                event.stopPropagation();
+                addItem(value.id);
+              }}
+              className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
+            >
               <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-plus"></i>{" "}
               {/* Ikon plus */}
             </div>
             <span className="flex-[1.5] rounded shadow text-[0.85em] sm:text-[0.9em] h-full bg-white flexc py-1 px-1">
               {value.quantity}
             </span>
-            <div className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer">
+            <div
+              onClick={(event) => {
+                event.stopPropagation();
+                removeItem(value.id);
+              }}
+              className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
+            >
               <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-minus"></i>{" "}
               {/* Ikon minus */}
             </div>

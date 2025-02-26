@@ -2,7 +2,7 @@ import kopi from "../assets/img/kopi.png";
 import susujeli from "../assets/img/susujeli.png";
 import melon from "../assets/img/melon.png";
 
-const dataProducts = [
+const myDataProducts = [
   {
     id: 1,
     image: kopi,
@@ -35,4 +35,4 @@ const dataProducts = [
   // },
 ];
 
-export default dataProducts;
+export default myDataProducts;

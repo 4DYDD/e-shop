@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import dataProducts from "./data/dataProducts";
+import myDataProducts from "./data/myDataProducts";
 
 import "./App.css";
 
@@ -9,8 +9,14 @@ import Content from "./components/fragments/Content";
 import Footer from "./components/fragments/Footer";
 
 function App() {
-  // const [products, setProducts] = useState([{}]);
+  const [dataProducts, setDataProducts] = useState([]);
   // const [cart, setCart] = useState([{}]);
+
+  useEffect(() => {
+    if (dataProducts.length < 1) {
+      setDataProducts(myDataProducts);
+    }
+  }, []);
 
   const dummyCart = [
     {
@@ -29,6 +35,7 @@ function App() {
       totalPrice: 24000,
     },
   ];
+
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -36,11 +43,26 @@ function App() {
     console.log(cart);
   }, [cart]);
 
-  // useEffect(() => {
-  //   if (dataProducts.length > 0) {
-  //     setProducts(dataProducts);
-  //   }
-  // }, []);
+  const toIndonesiaCurrency = (number) => {
+    return number
+      .toLocaleString("id-ID", {
+        style: "currency",
+        currency: "IDR",
+      })
+      .replace(/,00$/, "");
+  };
+
+  const totalPesanan = () => {
+    if (cart.length > 0) {
+      const total = cart
+        .map((value) => value.totalPrice)
+        .reduce((prev, value) => {
+          return prev + value;
+        }, 0);
+
+      return total;
+    }
+  };
 
   const findCartProduct = (id) => {
     const product = cart.find((value, index) => value.id == id);
@@ -117,6 +139,60 @@ function App() {
     setCart(updatedCart);
   };
 
+  const createOrderString = (orders) => {
+    let message = "```";
+
+    // USER BISA INPUT ALAMAT (OPSIONAL)
+    const Alamat = "";
+
+    const garisPembungkus = "◯ ------------------------------ ◯";
+    const garisPembungkusTotal = "◯ ============================== ◯";
+
+    orders.forEach((order, index) => {
+      message += `
+${garisPembungkus}
+Pesanan ${index + 1} :
+ • ID Produk        : ${order.id}
+ • Nama Produk      : ${order.name}
+ • Harga Produk     : ${toIndonesiaCurrency(order.price)}
+ • Jumlah Pembelian : ${order.quantity}
+ • Total Harga      : ${toIndonesiaCurrency(order.totalPrice)}
+${garisPembungkus}
+`;
+    });
+
+    message += `
+       
+${garisPembungkusTotal}
+`;
+
+    if (Alamat) {
+      message += `
+Alamat:
+${Alamat}
+`;
+    }
+
+    message += `
+Total Pesanan: ${totalPesanan()}
+
+${garisPembungkusTotal}`;
+
+    message += "```";
+
+    return message;
+  };
+
+  const createOrder = (orders) => {
+    const orderMessage = createOrderString(orders);
+    const whatsappLink = `https://wa.me/6282353358245?text=${encodeURIComponent(
+      orderMessage
+    )}`;
+
+    // Untuk membuka link di browser:
+    window.open(whatsappLink, "_blank"); // Ganti 'nomor_telepon' dengan nomor admin
+  };
+
   return (
     <main className="font-capriola">
       <Navbar
@@ -124,6 +200,8 @@ function App() {
         setCart={setCart}
         addItem={addItem}
         removeItem={removeItem}
+        createOrder={createOrder}
+        dataProducts={dataProducts}
       />
       <Content cart={cart} addItem={addItem} removeItem={removeItem} />
       <Footer />

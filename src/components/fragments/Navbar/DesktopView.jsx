@@ -5,9 +5,18 @@ function DesktopView({
   toIndonesiaCurrency,
   showCart,
   cart,
+  setCart,
   setShowCart,
+  addItem,
+  removeItem,
   totalPesanan,
+  createOrder,
+  dataProducts,
 }) {
+  const findProduct = (id) => {
+    const product = dataProducts.find((value) => value.id == id);
+    return product;
+  };
   return (
     <>
       <div className="hidden lg:flex">
@@ -41,6 +50,8 @@ function DesktopView({
                   <React.Fragment key={index}>
                     <CartList
                       toIndonesiaCurrency={toIndonesiaCurrency}
+                      addItem={addItem}
+                      removeItem={removeItem}
                       value={value}
                     />
                   </React.Fragment>
@@ -67,32 +78,52 @@ function DesktopView({
               </span>
             </div>
             <div className="flexc !justify-end gap-8 px-10 flex-[2] h-full text-white text-base">
-              <button
-                onClick={() => {
-                  const konfirmasi = confirm(
-                    "Yakin Mau Mengosongkan Keranjang?"
-                  );
+              {cart && cart.length > 0 && (
+                <>
+                  <button
+                    onClick={() => {
+                      const konfirmasi = confirm(
+                        "Yakin Mau Mengosongkan Keranjang?"
+                      );
 
-                  if (konfirmasi) {
-                    alert("Fitur Batalkan Pesanan Sedang Dibuat!");
-                    setShowCart(!showCart);
-                  }
-                }}
-                className="px-4 py-3 bg-red-500 rounded-lg shadow"
-              >
-                <i className="mr-3 text-lg fa-solid fa-trash-arrow-up"></i>
-                <span>Kosongkan Keranjang</span>
-              </button>
-              <button
-                onClick={() => {
-                  alert("Fitur Pesan Sedang Dibuat!");
-                  setShowCart(!showCart);
-                }}
-                className="px-4 py-3 bg-green-500 rounded-lg shadow"
-              >
-                <i className="mr-3 text-lg fa-solid fa-cart-arrow-down"></i>
-                <span>Buat Pesanan</span>
-              </button>
+                      if (konfirmasi) {
+                        // alert("Fitur Batalkan Pesanan Sedang Dibuat!");
+
+                        setCart([]);
+                        setShowCart(!showCart);
+                      }
+                    }}
+                    className="px-4 py-3 bg-red-500 rounded-lg shadow"
+                  >
+                    <i className="mr-3 text-lg fa-solid fa-trash-arrow-up"></i>
+                    <span>Kosongkan Keranjang</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      // alert("Fitur Pesan Sedang Dibuat!");
+
+                      const fullOrder = cart.map((value) => {
+                        const product = findProduct(value.id);
+                        const cartList = {
+                          ...value,
+                          name: product.name,
+                          price: product.price,
+                        };
+
+                        return cartList;
+                      });
+
+                      createOrder(fullOrder);
+
+                      setShowCart(!showCart);
+                    }}
+                    className="px-4 py-3 bg-green-500 rounded-lg shadow"
+                  >
+                    <i className="mr-3 text-lg fa-solid fa-cart-arrow-down"></i>
+                    <span>Buat Pesanan</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

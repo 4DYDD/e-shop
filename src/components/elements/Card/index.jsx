@@ -33,10 +33,10 @@ function index({ key, value, cart, addItem, removeItem }) {
             <span className="transcenter !left-0 !translate-x-0 !top-[90%] md:!top-[90%] w-1/6 h-[2px] bg-sky-400"></span>
           </p>
           <div className="flex-col flex-[1] w-full py-2 text-sm flexc">
-            {/* === TAMBAHKAN KONDISI UNTUK TOGGLE JUSTIFY KOMPONEN INI === */}
-            <div className={`w-full flexc !justify-between`}>
+            {/* === TAMBAHKAN KONDISI UNTUK TOGGLE JUSTIFY KOMPONEN KE JUSTIFY BETWEEN INI === */}
+            <div className={`w-full flexc !justify-end`}>
               {/* === TAMBAHKAN KONDISI UNTUK TOGGLE TOMBOL INI === */}
-              <button
+              {/* <button
                 onClick={() => {
                   // addItem(value.id);
                   alert("lihat keranjang!");
@@ -45,7 +45,7 @@ function index({ key, value, cart, addItem, removeItem }) {
               >
                 <i className="mr-1.5 fa-solid fa-cart-shopping"></i>
                 <span>Lihat Keranjang</span>
-              </button>
+              </button> */}
               {/* === TAMBAHKAN KONDISI UNTUK TOGGLE TOMBOL INI === */}
 
               <div className="px-3 py-2 text-sm font-bold bg-white rounded-lg shadow md:text-base text-sky-500">

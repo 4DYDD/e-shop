@@ -1,7 +1,7 @@
 import React from "react";
 import Library from "./Library";
 import { Link, Element } from "react-scroll";
-import dataProducts from "../../../../data/dataProducts";
+import dataProducts from "../../../../data/myDataProducts";
 
 function index({ cart, addItem, removeItem }) {
   return (
