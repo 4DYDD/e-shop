@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "./Image";
 
-function index({ key, value, cart, addItem }) {
+function index({ key, value, cart, addItem, removeItem }) {
   const toIndonesiaCurrency = (number) => {
     return number
       .toLocaleString("id-ID", {
@@ -33,7 +33,21 @@ function index({ key, value, cart, addItem }) {
             <span className="transcenter !left-0 !translate-x-0 !top-[90%] md:!top-[90%] w-1/6 h-[2px] bg-sky-400"></span>
           </p>
           <div className="flex-col flex-[1] w-full py-2 text-sm flexc">
-            <div className="w-full flexc !justify-end">
+            {/* === TAMBAHKAN KONDISI UNTUK TOGGLE JUSTIFY KOMPONEN INI === */}
+            <div className={`w-full flexc !justify-between`}>
+              {/* === TAMBAHKAN KONDISI UNTUK TOGGLE TOMBOL INI === */}
+              <button
+                onClick={() => {
+                  // addItem(value.id);
+                  alert("lihat keranjang!");
+                }}
+                className="px-4 py-2 text-white border hover:bg-sky-600 transall !duration-200 bg-sky-500 border-sky-500 rounded-xl flex items-center"
+              >
+                <i className="mr-1.5 fa-solid fa-cart-shopping"></i>
+                <span>Lihat Keranjang</span>
+              </button>
+              {/* === TAMBAHKAN KONDISI UNTUK TOGGLE TOMBOL INI === */}
+
               <div className="px-3 py-2 text-sm font-bold bg-white rounded-lg shadow md:text-base text-sky-500">
                 {toIndonesiaCurrency(value.price)}
               </div>
@@ -54,7 +68,7 @@ function index({ key, value, cart, addItem }) {
                 </>
               ) : (
                 <>
-                  <div className="text-sm lg:text-base w-[60%] md:w-[45%] lg:w-[60%] h-full gap-2 py-[0.32rem] md:py-[0.22rem] lg:py-[0.13rem] flexc">
+                  <div className="text-sm lg:text-base w-[60%] md:w-[45%] lg:w-[60%] h-full gap-2 py-[0.32rem] md:py-[0.22rem] lg:py-[0.13rem] flexc text-sky-500">
                     <div
                       onClick={(event) => {
                         event.stopPropagation();
@@ -68,7 +82,13 @@ function index({ key, value, cart, addItem }) {
                     <span className="flex-[1.5] rounded shadow text-[0.85em] sm:text-[0.9em] h-full bg-white flexc py-1 md:py-[0.32rem] px-1">
                       {thisCartProduct && thisCartProduct.quantity}
                     </span>
-                    <div className="flex-[1] rounded shadow h-full bg-white flexc py-1 md:py-[0.32rem] cursor-pointer">
+                    <div
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        removeItem(value.id);
+                      }}
+                      className="flex-[1] rounded shadow h-full bg-white flexc py-1 md:py-[0.32rem] cursor-pointer"
+                    >
                       <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-minus"></i>{" "}
                       {/* Ikon minus */}
                     </div>

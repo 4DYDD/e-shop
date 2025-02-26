@@ -50,7 +50,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
           </div>
 
           {/* === DEKSTOP VERSION === */}
-          <div className="flexc flex-[1] text-center gap-5 h-full sm:!flex !hidden">
+          <div className="flexc flex-[1] text-center gap-5 h-full !hidden lg:!flex">
             <Menu
               className={`py-5 font-semibold rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
               to={"myDashboard"}
@@ -105,7 +105,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                 setShowCart(!showCart);
               }
             }}
-            className="relative flexc flex-[1] !justify-end group sm:!hidden"
+            className="relative flexc flex-[1] !justify-end group lg:!hidden"
           >
             <span className="text-3xl text-biru-400 size-12 flexc">
               <i
@@ -129,11 +129,12 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
               setShowCart={setShowCart}
             />
 
+            {/* === KERANJANG MOBILE === */}
             <div
               onClick={(event) => {
                 event.stopPropagation();
               }}
-              className={`flexc flex-col flex-[1] h-[35rem] text-center w-[21rem] ${
+              className={`flexc flex-col flex-[1] h-[35rem] text-center w-[21rem] md:w-[40rem] ${
                 !showCart && "!hidden"
               } transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden`}
             >
@@ -169,19 +170,19 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
               )}
 
               <div className="flex-col w-full font-bold shadow shadow-gray-400 flexc">
-                <div className="py-5 flexc !justify-start w-full px-5 text-white text-base bg-biru-500">
+                <div className="py-5 flexc !justify-start w-full px-5 text-white text-base md:text-lg bg-biru-500">
                   <div>
                     Total Pesanan :{" "}
                     <span className="ms-1">
                       <span>
-                        {cart.length > 1
+                        {cart.length > 0
                           ? toIndonesiaCurrency(totalPesanan())
                           : `Rp 0`}
                       </span>
                     </span>
                   </div>
                 </div>
-                <div className="py-3 flexc !justify-evenly w-full text-white text-xs">
+                <div className="py-3 flexc !justify-evenly md:!justify-end w-full text-white text-xs md:text-sm">
                   <div
                     onClick={() => {
                       const konfirmasi = confirm(
@@ -192,7 +193,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                         setShowCart(!showCart);
                       }
                     }}
-                    className="px-2.5 py-2.5 bg-red-500 rounded-lg shadow flexc"
+                    className="md:me-3 px-2.5 py-2.5 bg-red-500 rounded-lg shadow flexc"
                   >
                     <i className="mr-2 text-[0.9rem] fa-solid fa-trash-arrow-up"></i>
                     <span>Kosongkan Keranjang</span>
@@ -202,7 +203,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                       alert("Fitur Pesan Sedang Dibuat!");
                       setShowCart(!showCart);
                     }}
-                    className="px-2.5 py-2.5 bg-green-500 rounded-lg shadow flexc"
+                    className="md:me-3 px-2.5 py-2.5 bg-green-500 rounded-lg shadow flexc"
                   >
                     <i className="mr-2 text-[0.9rem] fa-solid fa-cart-arrow-down"></i>
                     <span>Buat Pesanan</span>
@@ -210,6 +211,7 @@ function Navbar({ cart, setCart, addItem, removeItem }) {
                 </div>
               </div>
             </div>
+            {/* === KERANJANG MOBILE === */}
           </button>
           {/* === MOBILE VERSION === */}
         </div>

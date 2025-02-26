@@ -89,8 +89,32 @@ function App() {
     }
   };
 
-  const removeItem = (samting) => {
-    console.log("remove samting");
+  const removeItem = (id) => {
+    const cartProduct = findCartProduct(id);
+    const newQty = cartProduct.quantity - 1;
+    let updatedCart;
+
+    if (newQty < 1) {
+      const newCart = cart.filter((value) => value.id != id);
+      updatedCart = [...newCart];
+
+      updatedCart.sort((a, b) => a.id - b.id);
+    } else {
+      const newTotalPrice = findProduct(id).price * newQty;
+
+      const newCartProduct = {
+        ...cartProduct,
+        quantity: newQty,
+        totalPrice: newTotalPrice,
+      };
+
+      const newCart = cart.filter((value) => value.id != id);
+      updatedCart = [...newCart, newCartProduct];
+
+      updatedCart.sort((a, b) => a.id - b.id);
+    }
+
+    setCart(updatedCart);
   };
 
   return (
@@ -101,7 +125,7 @@ function App() {
         addItem={addItem}
         removeItem={removeItem}
       />
-      <Content cart={cart} addItem={addItem} />
+      <Content cart={cart} addItem={addItem} removeItem={removeItem} />
       <Footer />
     </main>
   );

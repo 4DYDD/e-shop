@@ -15,8 +15,8 @@ function CartList({ toIndonesiaCurrency, value }) {
         <div className="flex-[2.5] sm:flex-[8] h-full flexc flex-col !items-start ps-2.5 text-left text-biru-500 text-sm sm:text-lg">
           <div>{product.name}</div>
         </div>
-        <div className="flex-[3] sm:flex-[1.7] text-sm sm:text-base flexc flex-col text-left h-full py-4 sm:py-6 text-biru-500">
-          <div className="w-full text-[0.95em] sm:text-[1em] mb-1 sm:mb-2 text-biru-600">
+        <div className="flex-[3] md:flex-[5] lg:flex-[1.7] text-sm lg:text-base flexc flex-col text-left h-full py-4 md:py-5 lg:py-6 text-biru-500">
+          <div className="w-full text-[0.95em] md:text-[1em] lg:text-[1em] mb-1 lg:mb-2 text-biru-600">
             {toIndonesiaCurrency
               ? toIndonesiaCurrency(value.totalPrice)
               : value.totalPrice}

@@ -10,7 +10,7 @@ function DesktopView({
 }) {
   return (
     <>
-      <div className="hidden sm:flex">
+      <div className="hidden lg:flex">
         <div
           onClick={(event) => {
             event.stopPropagation();
@@ -60,7 +60,7 @@ function DesktopView({
               Total Pesanan :{" "}
               <span className="ms-3">
                 <span>
-                  {cart.length > 1
+                  {cart.length > 0
                     ? toIndonesiaCurrency(totalPesanan())
                     : `Rp 0`}
                 </span>

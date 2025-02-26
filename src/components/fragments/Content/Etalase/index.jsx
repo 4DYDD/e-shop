@@ -3,7 +3,7 @@ import Library from "./Library";
 import { Link, Element } from "react-scroll";
 import dataProducts from "../../../../data/dataProducts";
 
-function index({ cart, addItem }) {
+function index({ cart, addItem, removeItem }) {
   return (
     <>
       <Element
@@ -16,7 +16,12 @@ function index({ cart, addItem }) {
           </span>
           <span className="w-1/2 h-[2px] bg-sky-500 transcenter !top-14 sm:!top-20"></span>
         </div>
-        <Library dataProducts={dataProducts} cart={cart} addItem={addItem} />
+        <Library
+          dataProducts={dataProducts}
+          cart={cart}
+          addItem={addItem}
+          removeItem={removeItem}
+        />
       </Element>
     </>
   );

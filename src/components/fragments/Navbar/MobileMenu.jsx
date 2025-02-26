@@ -9,9 +9,9 @@ function MobileMenu({ offset, showSideBar, showCart, setShowCart }) {
   return (
     <>
       <div
-        className={`font-bold flexc flex-col flex-[1] text-center gap-2 w-[8rem] ${
+        className={`font-bold flexc flex-col flex-[1] text-center gap-2 w-[8rem] md:w-[12rem] ${
           !showSideBar && "!hidden"
-        } transcenter !top-[480%] bg-white p-3 rounded-lg shadow !left-[30%]`}
+        } transcenter !top-[480%] md:!top-[500%] bg-white p-3 rounded-lg shadow !left-[30%] md:!left-[80%]`}
       >
         <Menu
           className={`py-5 rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent w-full`}
