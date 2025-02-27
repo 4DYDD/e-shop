@@ -25,25 +25,27 @@ function CartList({ toIndonesiaCurrency, addItem, removeItem, value }) {
             <div
               onClick={(event) => {
                 event.stopPropagation();
-                addItem(value.id);
-              }}
-              className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
-            >
-              <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-plus"></i>{" "}
-              {/* Ikon plus */}
-            </div>
-            <span className="flex-[1.5] rounded shadow text-[0.85em] sm:text-[0.9em] h-full bg-white flexc py-1 px-1">
-              {value.quantity}
-            </span>
-            <div
-              onClick={(event) => {
-                event.stopPropagation();
                 removeItem(value.id);
               }}
               className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
             >
               <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-minus"></i>{" "}
               {/* Ikon minus */}
+            </div>
+
+            <span className="flex-[1.5] rounded shadow text-[0.85em] sm:text-[0.9em] h-full bg-white flexc py-1 px-1">
+              {value.quantity}
+            </span>
+
+            <div
+              onClick={(event) => {
+                event.stopPropagation();
+                addItem(value.id);
+              }}
+              className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
+            >
+              <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-plus"></i>{" "}
+              {/* Ikon plus */}
             </div>
           </div>
         </div>

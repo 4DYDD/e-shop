@@ -23,8 +23,8 @@ function index() {
             Rombong <br /> Mamah Hasan
           </div>
           <div className="text-lg text-biru-100">
-            Pengen es segar? <br /> <b>Rombong Mamah Hasan</b> solusinya! <br />{" "}
-            WA aja, es langsung meluncur!
+            Pengen es seger ? <br /> <b>Rombong Mamah Hasan</b> solusinya !{" "}
+            <br /> WA aja, es langsung meluncur.
           </div>
           <div className="gap-5 px-6 mt-8 sm:gap-10 sm:px-0 flexc">
             <Link to="myAbout" smooth={true} duration={300} offset={offset}>

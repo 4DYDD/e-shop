@@ -27,6 +27,7 @@ function index() {
           <span className="block mt-1">
             Komplek Budair Permai Blok B9 No.18
           </span>
+          <span>Sungai Jingah, Kec. Banjarmasin Utara</span>
         </p>
       </div>
       <div className="flex-col flexc">
@@ -35,7 +36,7 @@ function index() {
             to="myDashboard"
             smooth={true}
             duration={300}
-            className="py-4 mx-3 my-2 transall text-biru-500 hover:text-pink-500 sm:my-4"
+            className="py-4 mx-3 my-2 transall text-biru-400 !duration-200 hover:text-pink-500 sm:my-4"
             href={socialMedia.instagram}
             // target="_blank"
             rel="noopener noreferrer"
@@ -52,7 +53,7 @@ function index() {
             to="myDashboard"
             smooth={true}
             duration={300}
-            className="py-4 mx-3 my-2 transall text-biru-500 hover:text-green-500 sm:my-4"
+            className="py-4 mx-3 my-2 transall text-biru-400 !duration-200 hover:text-green-500 sm:my-4"
             href={socialMedia.whatsapp}
             // target="_blank"
             rel="noopener noreferrer"
@@ -69,7 +70,7 @@ function index() {
             to="myDashboard"
             smooth={true}
             duration={300}
-            className="py-4 mx-3 my-2 transall text-biru-500 hover:text-blue-500 sm:my-4"
+            className="py-4 mx-3 my-2 transall text-biru-400 !duration-200 hover:text-blue-500 sm:my-4"
             href={socialMedia.facebook}
             // target="_blank"
             rel="noopener noreferrer"
@@ -86,7 +87,7 @@ function index() {
             to="myDashboard"
             smooth={true}
             duration={300}
-            className="py-4 mx-3 my-2 transall text-biru-500 hover:text-black sm:my-4"
+            className="py-4 mx-3 my-2 transall text-biru-400 !duration-200 hover:text-black sm:my-4"
             href={socialMedia.twitter}
             // target="_blank"
             rel="noopener noreferrer"
@@ -101,7 +102,7 @@ function index() {
           </Link>
         </div>
 
-        <div className="w-full gap-1 px-6 py-6 mt-2 !text-biru-500 flexc">
+        <div className="w-full gap-1 px-6 py-6 mt-2 !text-biru-400 !duration-200 flexc">
           <div className="inline-block mx-auto text-sm sm:text-base">
             @copyright by{" "}
             <Link
