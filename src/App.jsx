@@ -191,7 +191,8 @@ ${garisPembungkusTotal}`;
 
   const createOrder = (orders) => {
     const orderMessage = createOrderString(orders);
-    const whatsappLink = `https://wa.me/6282353358245?text=${encodeURIComponent(
+    const phoneNumber = "6282251033970";
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       orderMessage
     )}`;
 

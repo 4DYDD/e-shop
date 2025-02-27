@@ -128,8 +128,8 @@ function Navbar({
               >
                 {cart && cart.length > 0 && (
                   <span className="size-3 rounded-full transcenter !-top-0.5 !-left-0.5 !translate-y-0 flexc overflow-hidden">
-                    <span className="animate-pingku bg-yellow-500 rounded-full p-1"></span>
-                    <span className="transcenter animate-pulseku bg-yellow-500 rounded-full p-2"></span>
+                    <span className="p-1 bg-yellow-500 rounded-full animate-pingku"></span>
+                    <span className="p-2 bg-yellow-500 rounded-full transcenter animate-pulseku"></span>
                   </span>
                 )}
 
@@ -212,7 +212,7 @@ function Navbar({
                 </>
               ) : (
                 <>
-                  <div className="relative w-full h-full p-3 text-sm md:text-lg font-bold flexc text-biru-200">
+                  <div className="relative w-full h-full p-3 text-sm font-bold md:text-lg flexc text-biru-200">
                     Keranjang Kosong . . .
                   </div>
                 </>

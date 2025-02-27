@@ -19,6 +19,7 @@ function index() {
               meluncur!
             </p>
           </div>
+
           <Contact />
         </footer>
       </Element>
