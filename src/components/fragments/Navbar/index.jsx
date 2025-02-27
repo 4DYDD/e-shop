@@ -13,6 +13,8 @@ function Navbar({
   setCart,
   addItem,
   removeItem,
+  showCart,
+  setShowCart,
   createOrder,
   dataProducts,
 }) {
@@ -20,7 +22,6 @@ function Navbar({
   const offset = isMobile ? -100 : -50; // Sesuaikan offset berdasarkan ukuran layar
 
   const [showSideBar, setShowSideBar] = useState(false);
-  const [showCart, setShowCart] = useState(false);
 
   const toIndonesiaCurrency = (number) => {
     return number
@@ -50,7 +51,7 @@ function Navbar({
 
   return (
     <>
-      <nav className="py-3 fixed w-full top-0 z-[99] bg-white shadow">
+      <nav className="py-3 xl:py-5 fixed w-full top-0 z-[99] bg-white shadow xl:shadow-gray-400">
         <div className="flexc !justify-between sm:!justify-center w-full max-w-[70rem] mx-auto px-6">
           <div className="flexc flex-[3] sm:flex-[1] !justify-start sm:ps-10">
             <div className="border-2 rounded-full shadow size-14 sm:size-20 flexc border-biru-300">
@@ -64,23 +65,23 @@ function Navbar({
           {/* === DEKSTOP VERSION === */}
           <div className="flexc flex-[1] text-center gap-5 h-full !hidden lg:!flex">
             <Menu
-              className={`py-5 font-semibold rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
+              className={`py-5 font-semibold rounded-2xl shadow xl:shadow-biru-300 transall text-biru-400 hover:text-biru-700 !bg-transparent`}
               to={"myDashboard"}
             >
-              Home
+              Beranda
             </Menu>
             <Menu
-              className={`py-5 font-semibold rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
+              className={`py-5 font-semibold rounded-2xl shadow xl:shadow-biru-300 transall text-biru-400 hover:text-biru-700 !bg-transparent`}
               to={"myEtalase"}
               offset={offset}
             >
-              Product
+              Produk
             </Menu>
             <Menu
-              className={`py-5 font-semibold rounded-2xl shadow transall text-biru-400 hover:text-biru-700 !bg-transparent`}
+              className={`py-5 font-semibold rounded-2xl shadow xl:shadow-biru-300 transall text-biru-400 hover:text-biru-700 !bg-transparent`}
               to={"myAbout"}
             >
-              About
+              Kontak
             </Menu>
             <Menu
               onClick={() => {
@@ -88,8 +89,8 @@ function Navbar({
               }}
               className={`font-semibold !bg-transparent flex-[1]`}
             >
-              <button className="w-full py-5 shadow rounded-2xl transall text-biru-400 hover:text-biru-700">
-                Cart
+              <button className="w-full py-5 shadow rounded-2xl xl:shadow-biru-300 transall text-biru-400 hover:text-biru-700">
+                Keranjang
               </button>
               {showCart && (
                 <div
@@ -116,21 +117,31 @@ function Navbar({
           {/* === MOBILE VERSION === */}
           <button
             onClick={() => {
-              if (!showCart) {
-                setShowSideBar(!showSideBar);
-              } else {
-                setShowCart(!showCart);
-              }
+              setShowSideBar(!showSideBar);
             }}
             className="relative flexc flex-[1] !justify-end group lg:!hidden"
           >
             <span className="text-3xl text-biru-400 size-12 flexc">
-              <i
-                className={`fa-solid fa-bars flex ${showSideBar && "!hidden"}`}
-              ></i>
-              <i
-                className={`fa-solid fa-xmark hidden ${showSideBar && "!flex"}`}
-              ></i>
+              <span
+                className={`relative flex ${showSideBar && "!hidden"}
+                 ${cart && cart.length > 0 && "animate-bounceku"}`}
+              >
+                {cart && cart.length > 0 && (
+                  <span className="size-3 rounded-full transcenter !-top-0.5 !-left-0.5 !translate-y-0 flexc overflow-hidden">
+                    <span className="animate-pingku bg-yellow-500 rounded-full p-1"></span>
+                    <span className="transcenter animate-pulseku bg-yellow-500 rounded-full p-2"></span>
+                  </span>
+                )}
+
+                <i className={`fa-solid fa-bars`}></i>
+              </span>
+              <span>
+                <i
+                  className={`fa-solid fa-xmark hidden ${
+                    showSideBar && "!flex"
+                  }`}
+                ></i>
+              </span>
             </span>
 
             {showSideBar && (
@@ -144,9 +155,20 @@ function Navbar({
               showSideBar={showSideBar}
               showCart={showCart}
               setShowCart={setShowCart}
+              cart={cart}
+              setCart={setCart}
             />
 
             {/* === KERANJANG MOBILE === */}
+            {showCart && (
+              <div
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setShowCart(!showCart);
+                }}
+                className={`flexc text-center w-full h-full transcenter !fixed p-3 shadow bg-[rgba(0,0,0,0.5)]`}
+              ></div>
+            )}
             <div
               onClick={(event) => {
                 event.stopPropagation();
@@ -155,10 +177,18 @@ function Navbar({
                 !showCart && "!hidden"
               } transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden`}
             >
-              <div className="w-full shadow flexc !justify-evenly">
-                <div className="w-full h-full py-3 text-white bg-biru-600 flexc">
-                  <i className="mr-1.5 fa-solid fa-cart-shopping"></i>
-                  <span className="font-bold">Keranjangmu</span>
+              <div className="w-full shadow flexc !justify-evenly text-lg md:text-xl relative">
+                <div className="w-full h-full flexc !justify-start ps-5 py-5 text-white bg-biru-600 flexc">
+                  <i className="mr-1.5 fa-solid fa-cart-shopping text-[1em]"></i>
+                  <span className="font-bold text-[1em]">Keranjangmu</span>
+                </div>
+                <div
+                  onClick={() => {
+                    setShowCart(!showCart);
+                  }}
+                  className="flex-[1] transcenter-r !-right-5 !translate-x-0 h-full w-28 flexc text-xl md:text-2xl text-white cursor-pointer"
+                >
+                  <i className={`fa-solid fa-xmark !flex`}></i>
                 </div>
               </div>
 
@@ -172,6 +202,8 @@ function Navbar({
                             <CartList
                               toIndonesiaCurrency={toIndonesiaCurrency}
                               value={value}
+                              addItem={addItem}
+                              removeItem={removeItem}
                             />
                           </React.Fragment>
                         ))}
@@ -180,7 +212,7 @@ function Navbar({
                 </>
               ) : (
                 <>
-                  <div className="relative w-full h-full p-3 text-lg font-bold flexc text-biru-200">
+                  <div className="relative w-full h-full p-3 text-sm md:text-lg font-bold flexc text-biru-200">
                     Keranjang Kosong . . .
                   </div>
                 </>
@@ -199,46 +231,52 @@ function Navbar({
                     </span>
                   </div>
                 </div>
-                <div className="py-3 flexc !justify-evenly md:!justify-end w-full text-white text-xs md:text-sm">
-                  <div
-                    onClick={() => {
-                      const konfirmasi = confirm(
-                        "Yakin Mau Mengosongkan Keranjang?"
-                      );
-                      if (konfirmasi) {
-                        alert("Fitur Batalkan Pesanan Sedang Dibuat!");
-                        setShowCart(!showCart);
-                      }
-                    }}
-                    className="md:me-3 px-2.5 py-2.5 bg-red-500 rounded-lg shadow flexc"
-                  >
-                    <i className="mr-2 text-[0.9rem] fa-solid fa-trash-arrow-up"></i>
-                    <span>Kosongkan Keranjang</span>
-                  </div>
-                  <div
-                    onClick={() => {
-                      // alert("Fitur Pesan Sedang Dibuat!");
+                <div
+                  className={`flexc !justify-evenly md:!justify-end text-white text-xs md:text-sm ${
+                    cart && cart.length > 0 && "w-full py-3"
+                  }`}
+                >
+                  {cart && cart.length > 0 && (
+                    <>
+                      <div
+                        onClick={() => {
+                          const konfirmasi = confirm(
+                            "Yakin Mau Mengosongkan Keranjang?"
+                          );
+                          if (konfirmasi) {
+                            setCart([]);
+                            setShowCart(!showCart);
+                          }
+                        }}
+                        className="md:me-3 px-2.5 py-2.5 bg-red-500 rounded-lg shadow flexc"
+                      >
+                        <i className="mr-2 text-[0.9rem] fa-solid fa-trash-arrow-up"></i>
+                        <span>Kosongkan Keranjang</span>
+                      </div>
+                      <div
+                        onClick={() => {
+                          const fullOrder = cart.map((value) => {
+                            const product = findProduct(value.id);
+                            const cartList = {
+                              ...value,
+                              name: product.name,
+                              price: product.price,
+                            };
 
-                      const fullOrder = cart.map((value) => {
-                        const product = findProduct(value.id);
-                        const cartList = {
-                          ...value,
-                          name: product.name,
-                          price: product.price,
-                        };
+                            return cartList;
+                          });
 
-                        return cartList;
-                      });
+                          createOrder(fullOrder);
 
-                      createOrder(fullOrder);
-
-                      setShowCart(!showCart);
-                    }}
-                    className="md:me-3 px-2.5 py-2.5 bg-green-500 rounded-lg shadow flexc"
-                  >
-                    <i className="mr-2 text-[0.9rem] fa-solid fa-cart-arrow-down"></i>
-                    <span>Buat Pesanan</span>
-                  </div>
+                          setShowCart(!showCart);
+                        }}
+                        className="md:me-3 px-2.5 py-2.5 bg-green-500 rounded-lg shadow flexc"
+                      >
+                        <i className="mr-2 text-[0.9rem] fa-solid fa-cart-arrow-down"></i>
+                        <span>Buat Pesanan</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

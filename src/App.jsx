@@ -10,7 +10,6 @@ import Footer from "./components/fragments/Footer";
 
 function App() {
   const [dataProducts, setDataProducts] = useState([]);
-  // const [cart, setCart] = useState([{}]);
 
   useEffect(() => {
     if (dataProducts.length < 1) {
@@ -37,6 +36,7 @@ function App() {
   ];
 
   const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     // buat fungsi untuk mengambil data di localStorage
@@ -117,6 +117,9 @@ function App() {
     let updatedCart;
 
     if (newQty < 1) {
+      if (!confirm("hapus pesanan?")) {
+        return;
+      }
       const newCart = cart.filter((value) => value.id != id);
       updatedCart = [...newCart];
 
@@ -154,9 +157,12 @@ ${garisPembungkus}
 Pesanan ${index + 1} :
  • ID Produk        : ${order.id}
  • Nama Produk      : ${order.name}
- • Harga Produk     : ${toIndonesiaCurrency(order.price)}
+ • Harga Produk     : ${toIndonesiaCurrency(order.price).replace(/\s/g, "")}
  • Jumlah Pembelian : ${order.quantity}
- • Total Harga      : ${toIndonesiaCurrency(order.totalPrice)}
+ • Total Harga      : ${toIndonesiaCurrency(order.totalPrice).replace(
+   /\s/g,
+   ""
+ )}
 ${garisPembungkus}
 `;
     });
@@ -174,7 +180,7 @@ ${Alamat}
     }
 
     message += `
-Total Pesanan: ${totalPesanan()}
+Total Pesanan: ${toIndonesiaCurrency(totalPesanan()).replace(/\s/g, "")}
 
 ${garisPembungkusTotal}`;
 
@@ -200,10 +206,18 @@ ${garisPembungkusTotal}`;
         setCart={setCart}
         addItem={addItem}
         removeItem={removeItem}
+        showCart={showCart}
+        setShowCart={setShowCart}
         createOrder={createOrder}
         dataProducts={dataProducts}
       />
-      <Content cart={cart} addItem={addItem} removeItem={removeItem} />
+      <Content
+        cart={cart}
+        addItem={addItem}
+        removeItem={removeItem}
+        showCart={showCart}
+        setShowCart={setShowCart}
+      />
       <Footer />
     </main>
   );

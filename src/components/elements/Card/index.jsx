@@ -1,7 +1,15 @@
 import React from "react";
 import Image from "./Image";
 
-function index({ key, value, cart, addItem, removeItem }) {
+function index({
+  key,
+  value,
+  cart,
+  addItem,
+  removeItem,
+  showCart,
+  setShowCart,
+}) {
   const toIndonesiaCurrency = (number) => {
     return number
       .toLocaleString("id-ID", {
@@ -22,7 +30,7 @@ function index({ key, value, cart, addItem, removeItem }) {
     <>
       <div
         key={key}
-        className="h-[32rem] flexc flex-col overflow-hidden rounded-lg shadow"
+        className="h-[32rem] flexc flex-col overflow-hidden rounded-lg shadow xl:shadow-gray-400"
       >
         <div className="flex-[3] w-full bg-emerald-300">
           <Image className={``} value={value} />
@@ -34,18 +42,24 @@ function index({ key, value, cart, addItem, removeItem }) {
           </p>
           <div className="flex-col flex-[1] w-full py-2 text-sm flexc">
             {/* === TAMBAHKAN KONDISI UNTUK TOGGLE JUSTIFY KOMPONEN KE JUSTIFY BETWEEN INI === */}
-            <div className={`w-full flexc !justify-end`}>
+            <div
+              className={`w-full flexc ${
+                cart && cart.length > 0 ? "!justify-between" : "!justify-end"
+              }`}
+            >
               {/* === TAMBAHKAN KONDISI UNTUK TOGGLE TOMBOL INI === */}
-              {/* <button
-                onClick={() => {
-                  // addItem(value.id);
-                  alert("lihat keranjang!");
-                }}
-                className="px-4 py-2 text-white border hover:bg-sky-600 transall !duration-200 bg-sky-500 border-sky-500 rounded-xl flex items-center"
-              >
-                <i className="mr-1.5 fa-solid fa-cart-shopping"></i>
-                <span>Lihat Keranjang</span>
-              </button> */}
+              {cart && cart.length > 0 && (
+                <button
+                  onClick={() => {
+                    setShowCart(!showCart);
+                  }}
+                  className="px-3 text-xs py-2 text-white border hover:bg-sky-600 transall !duration-200 bg-sky-500 border-sky-500 rounded-xl flex items-center"
+                >
+                  <i className="mr-1.5 fa-solid fa-cart-shopping"></i>
+                  <span>Lihat Keranjang?</span>
+                </button>
+              )}
+
               {/* === TAMBAHKAN KONDISI UNTUK TOGGLE TOMBOL INI === */}
 
               <div className="px-3 py-2 text-sm font-bold bg-white rounded-lg shadow md:text-base text-sky-500">
@@ -53,6 +67,7 @@ function index({ key, value, cart, addItem, removeItem }) {
               </div>
             </div>
 
+            {/* === QUANTITY BUTTON === */}
             <div className="w-full h-full py-2 flexc !justify-end">
               {cart && thisCartProduct.quantity < 1 ? (
                 <>
@@ -68,7 +83,7 @@ function index({ key, value, cart, addItem, removeItem }) {
                 </>
               ) : (
                 <>
-                  <div className="text-sm lg:text-base w-[60%] md:w-[45%] lg:w-[60%] h-full gap-2 py-[0.32rem] md:py-[0.22rem] lg:py-[0.13rem] flexc text-sky-500">
+                  <div className="text-sm md:text-base w-[60%] md:w-[45%] lg:w-[60%] h-full gap-2 py-[0.32rem] md:py-[0.22rem] lg:py-[0.13rem] flexc text-sky-500">
                     <div
                       onClick={(event) => {
                         event.stopPropagation();
@@ -96,6 +111,7 @@ function index({ key, value, cart, addItem, removeItem }) {
                 </>
               )}
             </div>
+            {/* === QUANTITY BUTTON === */}
           </div>
         </div>
       </div>
