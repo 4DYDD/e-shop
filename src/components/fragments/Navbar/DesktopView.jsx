@@ -24,7 +24,7 @@ function DesktopView({
           onClick={(event) => {
             event.stopPropagation();
           }}
-          className={`flexc flex-col flex-[1] h-[35rem] text-center w-[70rem] transcenter !fixed rounded-lg shadow !top-[52%] bg-white overflow-hidden ${
+          className={`flexc flex-col flex-[1] h-[35rem] text-center w-[70rem] transcenter !fixed rounded-lg shadow xl:shadow-gray-400 !top-[52%] bg-white overflow-hidden ${
             !showCart && "!hidden"
           }`}
         >
@@ -33,6 +33,7 @@ function DesktopView({
               <i className="mr-2 fa-solid fa-cart-shopping"></i>
               <span>Keranjangmu</span>
             </div>
+
             <div
               onClick={() => {
                 setShowCart(!showCart);
@@ -67,7 +68,11 @@ function DesktopView({
           )}
 
           <div className="w-full font-bold text-lg shadow shadow-gray-400 flexc !justify-evenly text-white">
-            <div className="py-8 flexc flex[1] !justify-start px-8 h-full bg-biru-500">
+            <div
+              className={`py-8 flexc !justify-start px-8 h-full bg-biru-500 ${
+                cart && cart.length < 1 && "flex-[1]"
+              }`}
+            >
               Total Pesanan :{" "}
               <span className="ms-3">
                 <span>
@@ -77,7 +82,12 @@ function DesktopView({
                 </span>
               </span>
             </div>
-            <div className="flexc !justify-end gap-8 px-10 flex-[2] h-full text-white text-base">
+
+            <div
+              className={`flexc !justify-end gap-8 ${
+                cart && cart.length > 0 && "flex-[2] px-10"
+              } h-full text-white text-base`}
+            >
               {cart && cart.length > 0 && (
                 <>
                   <button
@@ -87,8 +97,6 @@ function DesktopView({
                       );
 
                       if (konfirmasi) {
-                        // alert("Fitur Batalkan Pesanan Sedang Dibuat!");
-
                         setCart([]);
                         setShowCart(!showCart);
                       }
@@ -98,10 +106,9 @@ function DesktopView({
                     <i className="mr-3 text-lg fa-solid fa-trash-arrow-up"></i>
                     <span>Kosongkan Keranjang</span>
                   </button>
+
                   <button
                     onClick={() => {
-                      // alert("Fitur Pesan Sedang Dibuat!");
-
                       const fullOrder = cart.map((value) => {
                         const product = findProduct(value.id);
                         const cartList = {

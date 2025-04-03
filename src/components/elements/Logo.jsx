@@ -5,13 +5,13 @@ function Logo({ src, className }) {
   return (
     <>
       <div
-        className={`bg-pink-300 shadow size-full rounded-full my-10 ${className}`}
+        className={`shadow xl:shadow-gray-400 size-full rounded-full overflow-hidden my-10 ${className}`}
       >
         <div
           style={{
             backgroundImage: `url(${src || logoRMH})`,
           }}
-          className="w-full h-full bg-red-500 bg-center bg-no-repeat bg-cover rounded-full"
+          className="w-full h-full bg-center bg-no-repeat bg-cover"
         />
       </div>
     </>

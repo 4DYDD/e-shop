@@ -23,19 +23,21 @@ function index() {
             Rombong <br /> Mamah Hasan
           </div>
           <div className="text-lg text-biru-100">
-            Pengen es segar? <br /> <b>Rombong Mamah Hasan</b> solusinya! <br />{" "}
-            WA aja, es langsung meluncur!
+            Pengen es seger ? <br /> <b>Rombong Mamah Hasan</b> solusinya !{" "}
+            <br /> WA aja, es langsung meluncur.
           </div>
           <div className="gap-5 px-6 mt-8 sm:gap-10 sm:px-0 flexc">
-            <button className="px-7 sm:px-10 py-3 text-sm sm:text-base sm:py-3 bg-transparent border hover:bg-sky-500 hover:text-white border-sky-500 transall !duration-300 text-sky-500 rounded-xl flex items-center">
-              <i className="mr-4 text-lg fa-solid fa-location-dot" />
-              Lokasi
-            </button>
+            <Link to="myAbout" smooth={true} duration={300} offset={offset}>
+              <div className="px-5 md:px-6 py-3 text-sm md:text-base md:py-3 bg-transparent border hover:bg-sky-500 hover:text-white border-sky-500 transall !duration-300 text-sky-500 rounded-xl flex items-center cursor-pointer">
+                <i className="mr-2 text-lg fa-solid fa-store" />
+                Kontak
+              </div>
+            </Link>
             <Link to="myEtalase" smooth={true} duration={300} offset={offset}>
-              <button className="px-7 sm:px-10 py-3 text-sm sm:text-base sm:py-3 text-white border hover:bg-sky-600 transall !duration-200 bg-sky-500 border-sky-500 rounded-xl flex items-center">
-                <i className="mr-4 text-lg fa-solid fa-cart-arrow-down" />
+              <div className="px-9 md:px-10 py-3 text-sm md:text-base md:py-3 text-white border hover:bg-sky-600 transall !duration-200 bg-sky-500 border-sky-500 rounded-xl flex items-center cursor-pointer">
+                <i className="mr-2 text-lg fa-solid fa-cart-arrow-down" />
                 Beli
-              </button>
+              </div>
             </Link>
           </div>
         </div>

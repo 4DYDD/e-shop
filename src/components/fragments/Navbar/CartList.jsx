@@ -8,8 +8,8 @@ function CartList({ toIndonesiaCurrency, addItem, removeItem, value }) {
     <>
       <div className="w-full flexc h-16 sm:h-24 !justify-between">
         <div className="flex-[1] h-full flexc">
-          <div className="rounded-full shadow shadow-biru-300 size-14 sm:size-20 flexc">
-            <Logo src={product.image} />
+          <div className="rounded-lg shadow shadow-biru-300 size-14 sm:size-20 flexc">
+            <Logo className={`rounded-lg`} src={product.image} />
           </div>
         </div>
         <div className="flex-[2.5] sm:flex-[8] h-full flexc flex-col !items-start ps-2.5 text-left text-biru-500 text-sm sm:text-lg">
@@ -25,25 +25,27 @@ function CartList({ toIndonesiaCurrency, addItem, removeItem, value }) {
             <div
               onClick={(event) => {
                 event.stopPropagation();
-                addItem(value.id);
-              }}
-              className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
-            >
-              <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-plus"></i>{" "}
-              {/* Ikon plus */}
-            </div>
-            <span className="flex-[1.5] rounded shadow text-[0.85em] sm:text-[0.9em] h-full bg-white flexc py-1 px-1">
-              {value.quantity}
-            </span>
-            <div
-              onClick={(event) => {
-                event.stopPropagation();
                 removeItem(value.id);
               }}
               className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
             >
               <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-minus"></i>{" "}
               {/* Ikon minus */}
+            </div>
+
+            <span className="flex-[1.5] rounded shadow text-[0.85em] sm:text-[0.9em] h-full bg-white flexc py-1 px-1">
+              {value.quantity}
+            </span>
+
+            <div
+              onClick={(event) => {
+                event.stopPropagation();
+                addItem(value.id);
+              }}
+              className="flex-[1] rounded shadow h-full bg-white flexc py-1 cursor-pointer"
+            >
+              <i className="fa-solid text-[0.6em] sm:text-[0.8em] fa-plus"></i>{" "}
+              {/* Ikon plus */}
             </div>
           </div>
         </div>
